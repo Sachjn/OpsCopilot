@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: opscopilot-backend
+    env: docker
+    plan: free
+    repo: https://github.com/<your-username>/OpsCopilot
+    branch: main
+    buildCommand: null
+    startCommand: docker run -p 8000:8000 opscopilot-backend:latest
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: OPENAI_API_KEY
+        scope: secret
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: EMBED_MODEL
+        value: sentence-transformers/all-MiniLM-L6-v2
